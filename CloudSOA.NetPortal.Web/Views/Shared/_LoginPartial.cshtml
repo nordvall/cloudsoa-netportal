@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account"))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <span>Hello @User.Identity.GetUserName() !</span>
+                <button type="submit" class="btn">Log off</button>
+            </li>
+        </ul>
+    }
+}
+else
+{       
+    using (Html.BeginForm("ExternalLogin", "Account", new { returnUrl = Request.Url.AbsoluteUri }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <button type="submit" class="btn">Log in</button>
+            </li>
+        </ul>
+    }
+}
