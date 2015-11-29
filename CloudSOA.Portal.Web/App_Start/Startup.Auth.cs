@@ -34,6 +34,9 @@ namespace CloudSOA.Portal.Web
             {
                 ClientId = clientId,
                 Authority = authority,
+
+                // If not specified, Azure AD will redirect to first "reply url" configured in Azure portal
+                RedirectUri = redirectUri, 
                 
                 Notifications = new OpenIdConnectAuthenticationNotifications
                 { 
