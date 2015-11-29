@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CloudSOA.Portal.Web.Models
 {
-    public class ToDoItemViewModel
+    public class DjangoItemViewModel
     {
         public int id { get; set; }
 

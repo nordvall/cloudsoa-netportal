@@ -1,13 +1,13 @@
 ﻿@using CloudSOA.Portal.Web.Models;
 
-@model IEnumerable<DjangoItemViewModel>
+@model IEnumerable<SpringItemViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ToDo items</h2>
-@using (Html.BeginForm("Delete", "Django")) {
+<h2>Spring items</h2>
+@using (Html.BeginForm("Delete", "Spring")) {
 <table class="table">
     <tr>
         <th>Id</th>
@@ -17,13 +17,13 @@
         <th></th>
     </tr>
     
-    @foreach (DjangoItemViewModel item in Model)
+    @foreach (SpringItemViewModel item in Model)
     {
         <tr>
             <td>@item.id</td>
             <td>@item.text</td>
-            <td>@item.updated_by</td>
-            <td>@item.updated_at.ToLocalTime().ToString()</td>
+            <td>@item.modified_by</td>
+            <td>@item.modified_at.ToLocalTime().ToString()</td>
             <td>@Html.ActionLink("Redigera", "Edit", new { id = item.id }, new { @class = "btn btn-default" } )
                 <button type="submit" name="id" value="@item.id" class="btn btn-default">Ta bort</button></td>
         </tr>

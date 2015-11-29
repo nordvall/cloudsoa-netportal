@@ -12,13 +12,13 @@ using System.Net;
 namespace CloudSOA.Portal.Web.Controllers
 {
     [Authorize]
-    public class DjangoController : Controller
+    public class SpringController : Controller
     {
-        // GET: Django
+        // GET: Spring
         public ActionResult Index()
         {
             var request = new RestRequest("", Method.GET);
-            var items = SendRequest<List<DjangoItemViewModel>>(request, HttpStatusCode.OK);
+            var items = SendRequest<List<SpringItemViewModel>>(request, HttpStatusCode.OK);
             
             return View(items);
         }
@@ -26,19 +26,19 @@ namespace CloudSOA.Portal.Web.Controllers
         [HttpGet]
         public ActionResult Edit(int id = 0)
         {
-            var item = new DjangoItemViewModel();
+            var item = new SpringItemViewModel();
 
             if (id > 0)
             {
                 var request = new RestRequest(id.ToString() + "/", Method.GET);
-                item = SendRequest<DjangoItemViewModel>(request, HttpStatusCode.OK);
+                item = SendRequest<SpringItemViewModel>(request, HttpStatusCode.OK);
             }
 
             return View(item);
         }
 
         [HttpPost]
-        public ActionResult Edit(DjangoItemViewModel item)
+        public ActionResult Edit(SpringItemViewModel item)
         {
             if (!ModelState.IsValid)
             {
@@ -49,13 +49,13 @@ namespace CloudSOA.Portal.Web.Controllers
             {
                 var request = new RestRequest(item.id.ToString() + "/", Method.PUT);
                 request.AddJsonBody(item);
-                SendRequest<DjangoItemViewModel>(request, HttpStatusCode.OK);
+                SendRequest<SpringItemViewModel>(request, HttpStatusCode.OK);
             }
             else
             {
                 var request = new RestRequest("", Method.POST);
                 request.AddJsonBody(item);
-                SendRequest<DjangoItemViewModel>(request, HttpStatusCode.Created);
+                SendRequest<SpringItemViewModel>(request, HttpStatusCode.Created);
             }
 
             return RedirectToAction("Index");
@@ -97,14 +97,14 @@ namespace CloudSOA.Portal.Web.Controllers
 
         private RestClient createClient()
         {
-            string apiUrl = ReadConfigSettingOrThrow("django:apiurl");
-            string resourceId = ReadConfigSettingOrThrow("django:resourceid");
+            string apiUrl = ReadConfigSettingOrThrow("spring:apiurl");
+            string resourceId = ReadConfigSettingOrThrow("spring:resourceid");
 
             var tokenClient = CachingTokenClientFactory.CreateFromAppSettings(ConfigurationManager.AppSettings);
             string token = tokenClient.GetAccessTokenFromRefreshToken(User.Identity.Name, resourceId);
 
             var apiClient = new RestClient(apiUrl);
-            apiClient.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "JWT");
+            apiClient.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer");
 
             return apiClient;
         }

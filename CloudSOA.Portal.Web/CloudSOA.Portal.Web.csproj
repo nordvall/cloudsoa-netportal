@@ -148,12 +148,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\SpringController.cs" />
     <Compile Include="Controllers\DjangoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ToDoItem.cs" />
+    <Compile Include="Models\SpringItemViewModel.cs" />
+    <Compile Include="Models\DjangoItemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -181,6 +183,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Spring\Edit.cshtml" />
+    <Content Include="Views\Spring\Index.cshtml" />
     <None Include="Web.local.config" />
   </ItemGroup>
   <ItemGroup>
