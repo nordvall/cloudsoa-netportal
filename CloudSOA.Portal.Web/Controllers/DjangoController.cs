@@ -18,7 +18,7 @@ namespace CloudSOA.Portal.Web.Controllers
         public ActionResult Index()
         {
             var request = new RestRequest("", Method.GET);
-            var items = SendRequest<List<DjangoItemViewModel>>(request, HttpStatusCode.OK);
+            var items = SendRequest<DjangoListViewModel>(request, HttpStatusCode.OK);
             
             return View(items);
         }
@@ -104,7 +104,7 @@ namespace CloudSOA.Portal.Web.Controllers
             string token = tokenClient.GetAccessTokenFromRefreshToken(User.Identity.Name, resourceId);
 
             var apiClient = new RestClient(apiUrl);
-            apiClient.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "JWT");
+            apiClient.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(token, "Bearer");
 
             return apiClient;
         }

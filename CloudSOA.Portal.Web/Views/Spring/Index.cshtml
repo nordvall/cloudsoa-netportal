@@ -1,6 +1,6 @@
 ﻿@using CloudSOA.Portal.Web.Models;
 
-@model IEnumerable<SpringItemViewModel>
+@model SpringListViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
         <th></th>
     </tr>
     
-    @foreach (SpringItemViewModel item in Model)
+    @foreach (SpringItemViewModel item in Model.items)
     {
         <tr>
             <td>@item.id</td>

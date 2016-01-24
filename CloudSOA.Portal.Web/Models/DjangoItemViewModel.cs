@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace CloudSOA.Portal.Web.Models
 {
+    public class DjangoListViewModel
+    {
+        public List<DjangoItemViewModel> items { get; set; }
+    }
+
     public class DjangoItemViewModel
     {
         public int id { get; set; }

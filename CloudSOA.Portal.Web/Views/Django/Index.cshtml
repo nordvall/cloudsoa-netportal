@@ -1,6 +1,6 @@
 ﻿@using CloudSOA.Portal.Web.Models;
 
-@model IEnumerable<DjangoItemViewModel>
+@model DjangoListViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -17,7 +17,7 @@
         <th></th>
     </tr>
     
-    @foreach (DjangoItemViewModel item in Model)
+    @foreach (DjangoItemViewModel item in Model.items)
     {
         <tr>
             <td>@item.id</td>

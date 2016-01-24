@@ -18,7 +18,7 @@ namespace CloudSOA.Portal.Web.Controllers
         public ActionResult Index()
         {
             var request = new RestRequest("", Method.GET);
-            var items = SendRequest<List<SpringItemViewModel>>(request, HttpStatusCode.OK);
+            var items = SendRequest<SpringListViewModel>(request, HttpStatusCode.OK);
             
             return View(items);
         }

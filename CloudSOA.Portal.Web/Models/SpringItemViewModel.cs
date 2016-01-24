@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace CloudSOA.Portal.Web.Models
 {
+    public class SpringListViewModel
+    {
+        public List<SpringItemViewModel> items { get; set; }
+    }
+
     public class SpringItemViewModel
     {
         public int id { get; set; }
